@@ -1,0 +1,143 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #1f2937;
+  background: #f3f4f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.app-header {
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.app-header p {
+  margin-top: 0;
+  color: #6b7280;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quadrant {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  min-height: 260px;
+  padding: 0.9rem;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.05);
+}
+
+.quadrant-over {
+  border-color: #4f46e5;
+  background: #f5f3ff;
+}
+
+.quadrant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.quadrant-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.icon-button {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.4rem 0 0.7rem;
+}
+
+.composer input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.55rem 0.6rem;
+}
+
+.composer button {
+  border: none;
+  background: #111827;
+  color: white;
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.note-card {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.7rem;
+  background: #fafafa;
+  cursor: grab;
+  user-select: none;
+}
+
+.note-card input {
+  margin: 0;
+}
+
+.note-card span {
+  word-break: break-word;
+}
+
+.note-dragging {
+  opacity: 0.7;
+}
+
+.note-completed {
+  opacity: 0.6;
+}
+
+.note-completed span {
+  text-decoration: line-through;
+}
+
+@media (max-width: 900px) {
+  .matrix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quadrant {
+    min-height: 200px;
+  }
+}
