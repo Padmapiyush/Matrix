@@ -24,7 +24,6 @@ A fully responsive note-taking web app that uses the Eisenhower Matrix for prior
   - Reorder notes inside a quadrant
   - Move notes across quadrants
 - Local storage persistence
-- Uses standard Vite React plugin configuration (`vite.config.js`) for JSX/React runtime support.
 
 ## Project Structure
 

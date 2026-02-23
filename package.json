@@ -1,5 +1,5 @@
 {
-  "name": "eisenhower-matrix-notes",
+  "name": "matrix",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -15,7 +15,6 @@
     "sortablejs": "^1.15.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.2"
   }
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Quadrant from './components/Quadrant';
 
-const STORAGE_KEY = 'eisenhower-matrix-notes-v1';
+const STORAGE_KEY = 'matrix-v1';
 
 const QUADRANTS = [
   { id: 'urgent-important', title: 'Urgent & Important' },
@@ -78,7 +78,7 @@ function App() {
   return (
     <main className="app-shell">
       <header className="app-header">
-        <h1>Eisenhower Matrix Notes</h1>
+        <h1>Matrix Notes</h1>
         <p>Capture, prioritize, and move tasks with drag-and-drop.</p>
       </header>
 
