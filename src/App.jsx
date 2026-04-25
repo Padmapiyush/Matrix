@@ -1,116 +1,96 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 const PROFILE = {
-  name: 'Riya Sharma',
-  title: 'Data Engineering Analyst',
+  name: 'Alex Carter',
+  title: 'Senior Data Engineer',
   branding:
-    'Data Engineering Analyst focused on building trusted analytics layers and production-grade data pipelines that directly improve business decisions.',
+    'I build reliable, cost-efficient data platforms that turn noisy events into trustworthy decisions.',
   about:
-    'I design and maintain modern data platforms across ingestion, transformation, and BI delivery. My work combines analytics storytelling with strong engineering practices using SQL, Python, Databricks, and Airflow.',
+    'Data Engineer with 7+ years delivering batch + streaming pipelines, cloud lakehouse platforms, and governed analytics for product, finance, and operations teams.',
   contact: {
-    email: 'riya.sharma.analytics@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/riya-sharma-data',
-    github: 'https://github.com/riyasharma-data'
+    email: 'alex.carter.data@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/alex-carter-data',
+    github: 'https://github.com/alexcarter-data'
   },
-  resumeUrl: 'https://example.com/riya-sharma-data-engineering-analyst-resume.pdf'
+  resumeUrl: 'https://example.com/alex-carter-data-engineer-resume.pdf'
 };
 
 const SKILLS = {
-  'Data Engineering': [
-    'Medallion architecture (Bronze/Silver/Gold)',
-    'Batch and streaming ETL/ELT design',
-    'Data quality checks and observability',
-    'Pipeline performance optimization'
-  ],
-  SQL: ['Advanced joins/window functions', 'Dimensional modeling', 'Query tuning', 'Data validation frameworks'],
-  Python: ['PySpark ETL', 'Pandas analytics', 'API ingestion', 'Automation scripting'],
-  Databricks: ['Delta Lake', 'Unity Catalog', 'Auto Loader', 'Workflows & Jobs'],
-  Airflow: ['DAG design', 'Scheduling and backfills', 'SLA alerting', 'Production monitoring'],
-  Analytics: ['Power BI', 'KPI design', 'Executive dashboards', 'Business storytelling']
+  SQL: ['Query optimization', 'Data modeling', 'Dimensional modeling', 'Performance tuning'],
+  Python: ['PySpark', 'Pandas', 'Data quality frameworks', 'API ingestion'],
+  Databricks: ['Delta Lake', 'Unity Catalog', 'Auto Loader', 'Job orchestration'],
+  Airflow: ['DAG authoring', 'Backfill strategy', 'SLA alerting', 'Operational monitoring'],
+  'Power BI': ['Semantic models', 'DAX measures', 'Executive dashboards', 'Row-level security']
 };
 
 const PROJECTS = {
-  sales_intelligence_360: {
-    type: 'Data Analytics Project',
-    title: 'Sales Intelligence 360 Dashboard',
-    summary:
-      'Unified CRM, product, and revenue data into a KPI command center used by sales, finance, and leadership.',
+  customer360: {
+    title: 'Customer 360 Lakehouse',
+    summary: 'Unified fragmented customer events into one trusted profile used by growth and support.',
     problem:
-      'Revenue reporting was delayed, and leadership lacked a single trusted source for pipeline conversion and regional performance.',
+      'Customer interactions lived across CRM, product events, billing, and support systems, causing duplicate outreach and inconsistent reporting.',
     architecture:
-      'Built scheduled ingestion from CRM + finance systems into Databricks Bronze, transformed into conformed dimensions/facts in Silver/Gold using SQL + PySpark, and served executive dashboards in Power BI.',
-    stack: ['Databricks', 'SQL', 'Python', 'Power BI', 'Delta Lake'],
+      'Airflow orchestrates incremental ingestion into Databricks Bronze. PySpark + SQL transform into Silver entities and Gold customer marts. Power BI consumes Gold tables through governed semantic models.',
+    stack: ['Databricks', 'Airflow', 'SQL', 'Python', 'Power BI', 'Delta Lake'],
     impact: [
-      'Reduced monthly reporting cycle from 3 days to 2 hours.',
-      'Improved forecast accuracy by 17% through standardized KPI logic.',
-      'Increased regional drill-down adoption among sales leaders to 90% weekly usage.'
+      'Reduced time-to-insight from 2 days to 30 minutes.',
+      'Improved campaign targeting accuracy by 23%.',
+      'Cut manual reporting effort by ~15 analyst hours/week.'
     ]
   },
-  churn_risk_insights: {
-    type: 'Data Analytics Project',
-    title: 'Customer Churn Risk Insights Platform',
-    summary:
-      'Delivered churn-risk segmentation and renewal-risk dashboards for customer success teams.',
+  finops: {
+    title: 'Cloud FinOps Pipeline',
+    summary: 'Built daily cost intelligence pipelines with anomaly detection and chargeback reporting.',
     problem:
-      'Customer success teams could not proactively identify at-risk accounts due to disconnected engagement and billing signals.',
+      'Engineering leaders lacked visibility into cloud spend drivers and discovered budget overruns too late.',
     architecture:
-      'Ingested product usage, support tickets, and billing events into a curated model. Created churn-risk scoring features with Python and published account-level risk views and action recommendations in BI dashboards.',
-    stack: ['SQL', 'Python', 'Databricks', 'Airflow', 'Power BI'],
+      'Billing exports land in object storage, loaded through Databricks Auto Loader, enriched with tagging metadata, and exposed via Gold fact tables. Airflow triggers alerts for abnormal spend patterns.',
+    stack: ['Databricks', 'Airflow', 'SQL', 'Python'],
     impact: [
-      'Enabled weekly at-risk account targeting across 4 customer segments.',
-      'Improved renewal retention by 11% in two quarters.',
-      'Cut manual account health prep time by ~12 hours/week.'
+      'Lowered monthly cloud spend by 18% in 2 quarters.',
+      'Enabled team-level cost ownership with automated chargeback.',
+      'Detected anomalies within 2 hours instead of weekly reviews.'
     ]
   },
-  realtime_fraud_lakehouse: {
-    type: 'Data Engineering Project',
-    title: 'Real-Time Fraud Detection Lakehouse Pipeline',
-    summary:
-      'Built a streaming lakehouse pipeline for near real-time fraud scoring and investigator alerting.',
+  realtime_orders: {
+    title: 'Real-Time Order Reliability Platform',
+    summary: 'Introduced near-real-time order event processing for ops and customer success teams.',
     problem:
-      'Fraud detection relied on hourly jobs, delaying intervention and increasing financial exposure.',
+      'Order failure signals arrived too late, resulting in delayed customer communication and fulfillment risk.',
     architecture:
-      'Streamed transaction events into Delta Bronze, enriched with entity/device intelligence in Silver, and produced fraud feature marts in Gold. Airflow orchestrated daily retraining and reconciliation workflows.',
-    stack: ['Databricks', 'Structured Streaming', 'Airflow', 'SQL', 'Python', 'Delta Lake'],
+      'Streaming ingestion captures order events into Delta tables with CDC logic, while Airflow coordinates reconciliation and late-arriving event repair jobs. Curated metrics feed operational dashboards.',
+    stack: ['Databricks', 'SQL', 'Python', 'Airflow'],
     impact: [
-      'Reduced fraud alert latency from 60 minutes to under 3 minutes.',
-      'Supported 25M+ daily events with resilient checkpointing and replay.',
-      'Improved confirmed fraud catch rate by 21%.'
-    ]
-  },
-  iot_medallion_observability: {
-    type: 'Data Engineering Project',
-    title: 'IoT Medallion Pipeline with Data Observability',
-    summary:
-      'Implemented a scalable IoT ingestion and quality-observability framework for manufacturing telemetry.',
-    problem:
-      'Sensor data quality issues and schema drift caused unreliable plant performance metrics.',
-    architecture:
-      'Auto Loader ingested high-volume telemetry into Bronze; quality contracts validated schema, null thresholds, and freshness before promotion to Silver/Gold. Airflow managed SLA checks and incident notifications.',
-    stack: ['Databricks', 'Auto Loader', 'Airflow', 'SQL', 'Python', 'Delta Live Tables'],
-    impact: [
-      'Decreased pipeline failures from schema drift by 70%.',
-      'Improved trusted telemetry coverage to 98% across monitored lines.',
-      'Cut incident triage time by 45% via automated quality alerts.'
+      'Reduced failed-order detection latency from 4 hours to under 5 minutes.',
+      'Improved fulfillment SLA adherence by 14%.',
+      'Decreased support ticket volume tied to order status issues by 19%.'
     ]
   }
 };
 
 const EXPERIENCE = [
   {
-    period: '2024 - Present',
-    role: 'Data Engineering Analyst · Nova Retail Analytics',
+    period: '2023 - Present',
+    role: 'Senior Data Engineer · Nimbus Commerce',
     highlights: [
-      'Developed analytics-ready Gold layers for finance and growth reporting.',
-      'Implemented standardized quality checks across mission-critical pipelines.'
+      'Led migration from legacy warehouse ETL to Databricks lakehouse.',
+      'Designed reusable data quality checks across 60+ pipelines.'
     ]
   },
   {
-    period: '2021 - 2024',
-    role: 'Data Analyst / Junior Data Engineer · BrightEdge Commerce',
+    period: '2020 - 2023',
+    role: 'Data Engineer · Northstar Analytics',
     highlights: [
-      'Automated ETL reporting workflows and improved dashboard reliability.',
-      'Partnered with business teams to translate KPI definitions into governed models.'
+      'Built Airflow-based orchestration framework reducing DAG failures by 35%.',
+      'Implemented semantic marts powering executive KPI reporting.'
+    ]
+  },
+  {
+    period: '2018 - 2020',
+    role: 'BI / Data Analyst · Vertex Retail',
+    highlights: [
+      'Transitioned reporting workflows from spreadsheets to scalable SQL models.',
+      'Automated KPI reporting and improved stakeholder data trust.'
     ]
   }
 ];
@@ -142,7 +122,7 @@ const initialLines = [
   {
     id: crypto.randomUUID(),
     type: 'system',
-    text: "Type 'help' to explore commands and 'projects' to view portfolio case studies."
+    text: "Type 'help' to see available commands."
   }
 ];
 
@@ -151,11 +131,11 @@ const TYPE_INTERVAL_MS = 12;
 const normalize = (value) => value.toLowerCase().trim();
 
 const formatProject = (project) => [
-  `${project.type}: ${project.title}`,
+  `Project: ${project.title}`,
   `Problem: ${project.problem}`,
   `Architecture: ${project.architecture}`,
   `Tech Stack: ${project.stack.join(', ')}`,
-  'Business Impact:',
+  'Impact:',
   ...project.impact.map((item) => `  - ${item}`)
 ];
 
@@ -181,7 +161,11 @@ function App() {
   }, [lines]);
 
   useEffect(() => {
-    if (isTyping || !typingQueueRef.current.length) {
+    if (isTyping) {
+      return;
+    }
+
+    if (!typingQueueRef.current.length) {
       return;
     }
 
@@ -257,8 +241,7 @@ function App() {
     if (normalized === 'help') {
       queueOutput([
         { text: 'Available commands:' },
-        ...COMMANDS.map((cmd) => ({ text: `  - ${cmd}` })),
-        { text: "Tip: Try 'projects' then 'open realtime_fraud_lakehouse'." }
+        ...COMMANDS.map((cmd) => ({ text: `  - ${cmd}` }))
       ]);
       return;
     }
@@ -281,10 +264,8 @@ function App() {
 
     if (normalized === 'projects') {
       queueOutput([
-        { text: 'Portfolio Projects (2 Analytics + 2 Engineering):' },
-        ...Object.entries(PROJECTS).map(([key, project]) => ({
-          text: `  - ${key}: [${project.type}] ${project.summary}`
-        }))
+        { text: 'Projects (use open <project_name> for full case study):' },
+        ...Object.entries(PROJECTS).map(([key, project]) => ({ text: `  - ${key}: ${project.summary}` }))
       ]);
       return;
     }
@@ -332,39 +313,37 @@ function App() {
     }
 
     if (normalized === 'coffee') {
-      queueOutput([{ text: '☕ Brewing... ETL reliability increases by +10 focus points.' }]);
+      queueOutput([{ text: '☕ Brewing... Data pipelines run better with caffeine.' }]);
       return;
     }
 
     if (normalized === 'joke') {
       queueOutput([
         {
-          text: 'I told my pipeline to stay calm. It said: sorry, I am under a lot of pressure (from streaming).'
+          text: 'Why did the data engineer break up with the CSV? It had too many unresolved issues.'
         }
       ]);
       return;
     }
 
     if (normalized === 'theme') {
-      const newTheme = theme === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
-      queueOutput([{ text: `Theme switched to ${newTheme} mode.` }]);
+      setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+      queueOutput([{ text: `Theme switched to ${theme === 'dark' ? 'light' : 'dark'} mode.` }]);
       return;
     }
 
     if (normalized === 'run pipeline demo') {
       queueOutput([
-        { text: '[1/5] Pulling source data (API + files)...' },
-        { text: '[2/5] Writing Bronze Delta tables...' },
-        { text: '[3/5] Running quality checks and expectations...' },
-        { text: '[4/5] Transforming to Silver/Gold marts...' },
-        { text: '[5/5] Refreshing analytics model... done ✅' }
+        { text: '[1/4] Ingesting source events...' },
+        { text: '[2/4] Validating schema and quality checks...' },
+        { text: '[3/4] Transforming Silver -> Gold models...' },
+        { text: '[4/4] Publishing dashboard dataset... done ✅' }
       ]);
       return;
     }
 
     if (normalized.startsWith('github')) {
-      const username = value.split(' ')[1] || 'riyasharma-data';
+      const username = value.split(' ')[1] || 'alexcarter-data';
 
       try {
         const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
@@ -476,9 +455,7 @@ function App() {
           </label>
 
           {!!input && suggestions.length > 0 && (
-            <p className="suggestion">
-              suggestion: {suggestions[0]} {suggestions.length > 1 ? `(+${suggestions.length - 1} more)` : ''}
-            </p>
+            <p className="suggestion">suggestion: {suggestions[0]} {suggestions.length > 1 ? `(+${suggestions.length - 1} more)` : ''}</p>
           )}
         </div>
       </section>

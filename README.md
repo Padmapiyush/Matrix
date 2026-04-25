@@ -1,6 +1,6 @@
 # Data Engineer CLI Portfolio (React + Vite)
 
-A modern, interactive terminal-style portfolio website for a Data Engineering Analyst. The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
+A modern, interactive terminal-style portfolio website for a Data Engineer. The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
 
 ## Core Experience
 
@@ -30,14 +30,6 @@ A modern, interactive terminal-style portfolio website for a Data Engineering An
 - `joke` (fun)
 - `github [username]` (GitHub API)
 - `run pipeline demo`
-
-
-## Featured Portfolio Projects
-
-- `sales_intelligence_360` (Data Analytics)
-- `churn_risk_insights` (Data Analytics)
-- `realtime_fraud_lakehouse` (Data Engineering)
-- `iot_medallion_observability` (Data Engineering)
 
 ## Project Case Study Coverage
 
