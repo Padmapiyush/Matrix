@@ -1,66 +1,83 @@
-# Eisenhower Matrix Notes (React)
+# Data Engineer CLI Portfolio (React + Vite)
 
-A fully responsive note-taking web app that uses the Eisenhower Matrix for prioritization.
+A modern, interactive terminal-style portfolio website for a Data Engineer. The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
 
-## Features
+## Core Experience
 
-- 4 quadrants in a 2x2 layout:
-  - Urgent & Important
-  - Urgent
-  - Important
-  - Other
-- Responsive design:
-  - Desktop/tablet: 2x2 grid
-  - Mobile: stacked quadrants
-- Add notes with a ✏️ pencil action in each quadrant
-- Each note includes:
-  - Checkbox
-  - Task text
-  - Card-style UI
-- Completion state visuals:
-  - Strikethrough text
-  - Reduced opacity
-- Drag-and-drop with `SortableJS` / `react-sortablejs`:
-  - Reorder notes inside a quadrant
-  - Move notes across quadrants
-- Local storage persistence
+- Full-screen terminal UI with professional dark hacker-style aesthetic
+- Keyboard-first interaction (no traditional navigation)
+- Smooth typing animation for command responses
+- Blinking cursor and prompt-based command execution
+- Command auto-suggestions + tab auto-complete
+- Invalid command handling (`command not found` style)
+- Arrow key history navigation (`↑` / `↓`)
+- Mobile-adaptive layout with desktop-first UX
 
-## Project Structure
+## Included Commands
+
+- `help`
+- `about`
+- `skills`
+- `projects`
+- `open <project_name>`
+- `experience`
+- `contact`
+- `resume`
+- `clear`
+- `whoami`
+- `theme` (dark/light toggle)
+- `coffee` (fun)
+- `joke` (fun)
+- `github [username]` (GitHub API)
+- `run pipeline demo`
+
+## Project Case Study Coverage
+
+Each project returned by `open <project_name>` includes:
+
+- Problem statement
+- Architecture overview
+- Tech stack (Databricks, Airflow, SQL, Python, etc.)
+- Business impact/results
+
+## UI Structure & Component Breakdown
 
 ```text
-.
-├── index.html
-├── package.json
-├── src
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── styles.css
-│   └── components
-│       ├── NoteCard.jsx
-│       └── Quadrant.jsx
-└── README.md
+src/
+├── main.jsx            # React bootstrapping
+├── App.jsx             # Terminal UI, command parser, response engine, GitHub integration
+└── styles.css          # Terminal theming, animations, responsive behavior
 ```
 
-## Setup Instructions
+### `App.jsx` responsibilities
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Run in development mode:
-   ```bash
-   npm run dev
-   ```
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-4. Preview production build:
-   ```bash
-   npm run preview
-   ```
+- Stores portfolio data (profile, skills, projects, experience)
+- Renders a full terminal window and prompt input
+- Parses and executes commands
+- Manages animated response queue
+- Supports history navigation and tab auto-completion
+- Handles theme toggling and optional demo/fun commands
+- Integrates GitHub API lookup for live repositories
 
-## Notes
+### `styles.css` responsibilities
 
-- Data is persisted in `localStorage` under key: `eisenhower-matrix-notes-v1`.
-- The app uses React functional components and hooks.
+- JetBrains Mono typography
+- Dark/light theme variables
+- Terminal panel, glow, and accent styling
+- Blinking cursor animation
+- Readable line states (`system`, `input`, `error`)
+- Responsive layout adjustments for smaller screens
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Production Build
+
+```bash
+npm run build
+npm run preview
+```
