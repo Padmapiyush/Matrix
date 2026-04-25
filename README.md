@@ -1,17 +1,17 @@
-# Data Engineer CLI Portfolio (React + Vite)
+# Data Engineering Analyst CLI Portfolio (React + Vite)
 
-A modern, interactive terminal-style portfolio website for a Data Engineer. The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
+A modern, interactive terminal-style portfolio website tailored to **Padmapiyush Pathak** (Data Engineer / Data Engineering Analyst). The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
 
 ## Core Experience
 
-- Full-screen terminal UI with professional dark hacker-style aesthetic
-- Keyboard-first interaction (no traditional navigation)
-- Smooth typing animation for command responses
-- Blinking cursor and prompt-based command execution
+- Full-screen terminal UI with dark hacker-style aesthetics
+- Keyboard-first interaction (no traditional page navigation)
+- Smooth typing animation for command output
+- Blinking cursor and shell-like prompt experience
 - Command auto-suggestions + tab auto-complete
-- Invalid command handling (`command not found` style)
-- Arrow key history navigation (`↑` / `↓`)
-- Mobile-adaptive layout with desktop-first UX
+- Command history navigation (`↑` / `↓`)
+- Invalid command handling (`command not found`)
+- Mobile-adaptive responsive layout
 
 ## Included Commands
 
@@ -25,48 +25,36 @@ A modern, interactive terminal-style portfolio website for a Data Engineer. The 
 - `resume`
 - `clear`
 - `whoami`
-- `theme` (dark/light toggle)
-- `coffee` (fun)
-- `joke` (fun)
-- `github [username]` (GitHub API)
+- `theme`
+- `coffee`
+- `joke`
+- `github [username]`
 - `run pipeline demo`
+
+## Featured Portfolio Projects
+
+- `secure_azure_data_platform` (Data Engineering)
+- `million_record_etl_fabric` (Data Engineering)
+- `operations_kpi_command_center` (Data Analytics)
+- `vendor_experiment_analytics` (Data Analytics)
 
 ## Project Case Study Coverage
 
-Each project returned by `open <project_name>` includes:
+Each project rendered with `open <project_name>` includes:
 
 - Problem statement
 - Architecture overview
-- Tech stack (Databricks, Airflow, SQL, Python, etc.)
+- Tech stack
 - Business impact/results
 
-## UI Structure & Component Breakdown
+## UI Structure
 
 ```text
 src/
-├── main.jsx            # React bootstrapping
-├── App.jsx             # Terminal UI, command parser, response engine, GitHub integration
-└── styles.css          # Terminal theming, animations, responsive behavior
+├── main.jsx    # React entry point
+├── App.jsx     # Terminal UI + command engine + portfolio content
+└── styles.css  # Terminal styling, theme variables, responsiveness
 ```
-
-### `App.jsx` responsibilities
-
-- Stores portfolio data (profile, skills, projects, experience)
-- Renders a full terminal window and prompt input
-- Parses and executes commands
-- Manages animated response queue
-- Supports history navigation and tab auto-completion
-- Handles theme toggling and optional demo/fun commands
-- Integrates GitHub API lookup for live repositories
-
-### `styles.css` responsibilities
-
-- JetBrains Mono typography
-- Dark/light theme variables
-- Terminal panel, glow, and accent styling
-- Blinking cursor animation
-- Readable line states (`system`, `input`, `error`)
-- Responsive layout adjustments for smaller screens
 
 ## Run Locally
 
