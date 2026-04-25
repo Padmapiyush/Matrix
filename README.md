@@ -1,66 +1,71 @@
-# Eisenhower Matrix Notes (React)
+# Data Engineering Analyst CLI Portfolio (React + Vite)
 
-A fully responsive note-taking web app that uses the Eisenhower Matrix for prioritization.
+A modern, interactive terminal-style portfolio website tailored to **Padmapiyush Pathak** (Data Engineer / Data Engineering Analyst). The interface behaves like a real command line with typed commands, animated output, command history, auto-completion, and realistic error handling.
 
-## Features
+## Core Experience
 
-- 4 quadrants in a 2x2 layout:
-  - Urgent & Important
-  - Urgent
-  - Important
-  - Other
-- Responsive design:
-  - Desktop/tablet: 2x2 grid
-  - Mobile: stacked quadrants
-- Add notes with a ✏️ pencil action in each quadrant
-- Each note includes:
-  - Checkbox
-  - Task text
-  - Card-style UI
-- Completion state visuals:
-  - Strikethrough text
-  - Reduced opacity
-- Drag-and-drop with `SortableJS` / `react-sortablejs`:
-  - Reorder notes inside a quadrant
-  - Move notes across quadrants
-- Local storage persistence
+- Full-screen terminal UI with dark hacker-style aesthetics
+- Keyboard-first interaction (no traditional page navigation)
+- Smooth typing animation for command output
+- Blinking cursor and shell-like prompt experience
+- Command auto-suggestions + tab auto-complete
+- Command history navigation (`↑` / `↓`)
+- Invalid command handling (`command not found`)
+- Mobile-adaptive responsive layout
 
-## Project Structure
+## Included Commands
+
+- `help`
+- `about`
+- `skills`
+- `projects`
+- `open <project_name>`
+- `experience`
+- `contact`
+- `resume`
+- `clear`
+- `whoami`
+- `theme`
+- `coffee`
+- `joke`
+- `github [username]`
+- `run pipeline demo`
+
+## Featured Portfolio Projects
+
+- `secure_azure_data_platform` (Data Engineering)
+- `million_record_etl_fabric` (Data Engineering)
+- `operations_kpi_command_center` (Data Analytics)
+- `vendor_experiment_analytics` (Data Analytics)
+
+## Project Case Study Coverage
+
+Each project rendered with `open <project_name>` includes:
+
+- Problem statement
+- Architecture overview
+- Tech stack
+- Business impact/results
+
+## UI Structure
 
 ```text
-.
-├── index.html
-├── package.json
-├── src
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── styles.css
-│   └── components
-│       ├── NoteCard.jsx
-│       └── Quadrant.jsx
-└── README.md
+src/
+├── main.jsx    # React entry point
+├── App.jsx     # Terminal UI + command engine + portfolio content
+└── styles.css  # Terminal styling, theme variables, responsiveness
 ```
 
-## Setup Instructions
+## Run Locally
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Run in development mode:
-   ```bash
-   npm run dev
-   ```
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-4. Preview production build:
-   ```bash
-   npm run preview
-   ```
+```bash
+npm install
+npm run dev
+```
 
-## Notes
+## Production Build
 
-- Data is persisted in `localStorage` under key: `eisenhower-matrix-notes-v1`.
-- The app uses React functional components and hooks.
+```bash
+npm run build
+npm run preview
+```
